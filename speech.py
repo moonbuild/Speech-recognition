@@ -1,13 +1,18 @@
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import wikipedia
+import webbrowser
+import time
+import ecapture.ecapture as ec
+import wolframalpha
 
 
 #find alternatives to sapi5 if any
 #same for voices
 engine = pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
-engine.setProperty('voice', 'voices[1].id')
+engine.setProperty('voice', 'voices[0].id')
 
 def speak(text):
     engine.say(text)
@@ -26,7 +31,7 @@ def wish():
         speak("Hello, Good Evening sir")
         print("Hello, Good Evening sir")
 
-def speech_to_text():
+def takeCommands():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening🎧")
@@ -39,13 +44,15 @@ def speech_to_text():
             speak("Sorry, please say that again")
             return "None"
         return statement
+
 speak("Loading your personal AI- Boat")
+print("Loading your personal AI- Boat")
 wish()
 
 if __name__=='__main__':
     while True:
         speak('Tell me how can i help u now?')
-        statement = speech_to_text().lower()
+        statement = takeCommands().lower()
         if statement==0:
             continue
 
@@ -54,5 +61,42 @@ if __name__=='__main__':
             print("Your personal assistant-Boat is now shutting down")
             break
 
-        if 'wikipedia' in statement:
-            
+        if 'search the wikipedia on ' in statement:
+            speak('Searching through Wikipedia...')
+            statement = statement.replace('search the wikipedia on','')
+            results=wikipedia.summary(statement, sentences=3)
+            speak('According to Wikipedia')
+            print(results)
+            speak(results)
+
+        elif 'open youtube' in  statement:
+            webbrowser.open_new_tab('www.youtube.com')
+            speak('opening Youtube')
+            time.sleep(5)
+        elif 'open google' in  statement:
+            webbrowser.open_new_tab('www.google.com')
+            speak('opening google')
+            time.sleep(5)
+        elif 'open mail' in statement or 'check the mail' in statement:
+            webbrowser.open_new_tab('www.gmail.com')
+            speak('gmail is now open')
+            time.sleep(5)
+        
+        elif 'who are you' in statement or 'what can you do' in statement:
+            speak('I am Boat version 1 your personal assistant. I am currrently able to do minor tasks like opening websites, tell the time, take a photo, play songs search through wikipedia')
+        elif 'camera' in statement or 'take a photo' in statement:
+            ec.capture(0,'frame', 'cheese.jpg')
+        elif 'search' in statement:
+            statement=statement.replace('search','')
+            print(statement)
+            webbrowser.open_new_tab(statement)
+            time.sleep(5)
+        elif 'question' in statement or 'ask' in statement:
+            speak('What question do you want to ask now?')
+            question=takeCommands()
+            appid="P4HU6J-YTXTXUPV2T"
+            client=wolframalpha.Client('P4HU6J-YTXTXUPV2T')
+            result = client.query(question).results
+            answer=next(result).text
+            speak(answer)
+            print(answer)
