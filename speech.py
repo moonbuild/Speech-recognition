@@ -8,8 +8,6 @@ import ecapture.ecapture as ec
 import wolframalpha
 
 
-#find alternatives to sapi5 if any
-#same for voices
 engine = pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engine.setProperty('voice', 'voices[0].id')
@@ -61,7 +59,7 @@ if __name__=='__main__':
             print("Your personal assistant-Boat is now shutting down")
             break
 
-        if 'search the wikipedia on ' in statement:
+        if 'search wikipedia on ' in statement:
             speak('Searching through Wikipedia...')
             statement = statement.replace('search the wikipedia on','')
             results=wikipedia.summary(statement, sentences=3)
@@ -73,7 +71,7 @@ if __name__=='__main__':
             webbrowser.open_new_tab('www.youtube.com')
             speak('opening Youtube')
             time.sleep(5)
-        elif 'open google' in  statement:
+        elif 'open google' in  statement or 'open new tab' in statement:
             webbrowser.open_new_tab('www.google.com')
             speak('opening google')
             time.sleep(5)
@@ -91,8 +89,8 @@ if __name__=='__main__':
             print(statement)
             webbrowser.open_new_tab(statement)
             time.sleep(5)
-        elif 'question' in statement or 'ask' in statement:
-            speak('What question do you want to ask now?')
+        elif 'ask' in statement:
+            speak('Yes?')
             question=takeCommands()
             appid="P4HU6J-YTXTXUPV2T"
             client=wolframalpha.Client('P4HU6J-YTXTXUPV2T')
