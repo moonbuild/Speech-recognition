@@ -1,0 +1,23 @@
+{"intents":
+[
+    {"tag":"greeting",
+    "patterns":["Hey","Hello","Hi"],
+    "responses":["Hi Sir"]
+    },
+    {"tag":"",
+    "patterns":"",
+    "responses":""
+    },
+    {"tag":"",
+    "patterns":"",
+    "responses":""
+    },
+    {"tag":"",
+    "patterns":"",
+    "responses":""
+    },
+    {"tag":"",
+    "patterns":"",
+    "responses":""
+    }
+    ]}

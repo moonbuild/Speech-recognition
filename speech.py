@@ -7,10 +7,10 @@ import time
 import ecapture.ecapture as ec
 import wolframalpha
 
-
-engine = pyttsx3.init('sapi5')
-voices=engine.getProperty('voices')
-engine.setProperty('voice', 'voices[0].id')
+engine = pyttsx3.init()
+# engine = pyttsx3.init('sapi5')
+# voices=engine.getProperty('voices')
+# engine.setProperty('voice', 'voices[0].id')
 
 def speak(text):
     engine.say(text)
