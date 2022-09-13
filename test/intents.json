@@ -1,23 +1,50 @@
 {"intents":
 [
+    {"tag":"ask",
+    "patterns":["i would like to ask something", "i have something to ask about", "i have a few questions to ask", "i have a few doubts"],
+    "responses":"Yes?"},
+
     {"tag":"greeting",
     "patterns":["Hey","Hello","Hi"],
     "responses":["Hi Sir"]
     },
-    {"tag":"",
-    "patterns":"",
-    "responses":""
+
+    {"tag":"Search",
+    "patterns":["How do", "What is", "Search for", "Explore", "Look for"],
+    "responses":"<input search>"
     },
-    {"tag":"",
-    "patterns":"",
-    "responses":""
+
+    {"tag":"Time",
+    "patterns":["What's the time ?", "What is the time ?", "Can you tell me the time ?", "Time", "Tell me what time it is now ?"],
+    "responses":"One moment,  the time is: "
     },
-    {"tag":"",
-    "patterns":"",
-    "responses":""
+
+    {"tag":"counter greetings",
+    "patterns":["How are you?", "Hi how are you?", "How are you doing?"],
+    "responses":["Hello, I am good thank you, How are you", "Hello, how are you I am great thank you, How are you?"]
     },
-    {"tag":"",
-    "patterns":"",
-    "responses":""
-    }
+
+    {"tag":"About",
+    "patterns":["who are you?","What can you do"],
+    "responses":["I am BOAT a personal voice activated assistant"]
+    },
+
+    {"tag":"Thanks",
+    "patterns":["okay, thank you", "Thank you so much", "ok, thanks", "Thanks", "Thanks for your help"],
+    "responses":["Happy to help you", "Any time", "My pleasure"]
+    },
+
+    {"tag":"joke",
+    "patterns":["Tell me a joke", "Do you know any jokes", "Make a joke"],
+    "responses":"<input>"
+    },
+
+    {"tag":"Bye",
+    "patterns":["Bye", "ok bye", "adios", "See you later", "Good bye"],
+    "responses": ["See you later", "Have a nice day", "Come back again"]
+    },
+
+    {"tag":"Photo",
+    "patterns":["take a photo", "photo time", "open the camera"],
+    "responses":"ok just a moment"}
     ]}

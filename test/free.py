@@ -1,26 +1,13 @@
-from neuralintents import GenericAssistant
+from neuralintents import GenericAssistant as ga
 import speech_recognition
-import pyttsx3 as ts
-
+boat=ga.load_model('boat_ai.h5')
+print(boat.request('hello'))
 recognizer = speech_recognition.Recognizer()
 
-engine = ts.init('sapi5')
-voices=engine.getProperty('voices')
-engine.setProperty('voice', 'voices[1].id')
-# engine.setProperty('rate', 150)
-
-def hello_Norway():
-    print("Hello Norway")
-
-mappings = {'greetings': hello_Norway}
-boat = GenericAssistant('intents.json', intent_methods=mappings, model_name="boat_ai")
-boat.train_model()
-boat.save_model()
-
-if __name__ == "__main__":
+while True:
     try:
         with speech_recognition.Microphone() as mic:
-
+            print("Listening")
             recognizer.adjust_for_ambient_noise(mic, duration=0.2)
             audio=recognizer.listen(mic)
 
